@@ -1,0 +1,166 @@
+
+.prediction-section {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.prediction-section .section-header {
+    margin-bottom: 25px;
+}
+
+.prediction-section .section-header h2 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    color: #1f2937;
+}
+
+.prediction-section .section-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.prediction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.prediction-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.prediction-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.prediction-field input,
+.prediction-field select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+}
+
+.prediction-field input:focus,
+.prediction-field select:focus {
+    border-color: #2563eb;
+}
+
+.predict-button {
+    margin-top: 25px;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.predict-button:hover {
+    background: #1d4ed8;
+}
+
+.predict-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.prediction-result {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+.result-header h2 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 21px;
+}
+
+.risk-percentage {
+    margin: 20px 0;
+    font-size: 46px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.risk-message {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #374151;
+}
+
+.risk-message strong {
+    font-weight: 700;
+}
+
+.prediction-status {
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.medical-note {
+    margin: 25px auto 0;
+    max-width: 800px;
+    padding-top: 18px;
+    border-top: 1px solid #e5e7eb;
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.prediction-error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+@media (max-width: 900px) {
+
+    .prediction-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .prediction-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prediction-section,
+    .prediction-result {
+        padding: 20px;
+    }
+
+    .risk-percentage {
+        font-size: 38px;
+    }
+
+}

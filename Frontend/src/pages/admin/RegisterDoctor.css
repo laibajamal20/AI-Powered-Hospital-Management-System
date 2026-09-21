@@ -1,0 +1,119 @@
+/* =========================
+   REGISTER DOCTOR FORM
+========================= */
+
+.register-doctor-form {
+    width: 100%;
+}
+
+.doctor-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 22px;
+}
+
+.doctor-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-form-group label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.doctor-form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #1f2937;
+    outline: none;
+    transition: 0.2s;
+}
+
+.doctor-form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.08);
+}
+
+.doctor-form-group input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.doctor-form-error {
+    margin-top: 5px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: #fff1f2;
+    color: #dc2626;
+    font-size: 14px;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.doctor-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+.doctor-cancel-button {
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #555;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.doctor-cancel-button:hover {
+    background-color: #f9fafb;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .doctor-form-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .doctor-form-actions {
+        flex-direction: column;
+    }
+
+    .doctor-cancel-button,
+    .doctor-form-actions .admin-primary-button {
+        width: 100%;
+    }
+
+}

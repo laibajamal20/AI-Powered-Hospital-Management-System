@@ -1,0 +1,277 @@
+* {
+    box-sizing: border-box;
+}
+
+.admin-profile-page {
+    min-height: 100vh;
+    display: flex;
+    background-color: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.profile-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: white;
+    border-right: 1px solid #e5e7eb;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-sidebar-logo {
+    padding: 0 12px 30px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.profile-sidebar-logo h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #2563eb;
+}
+
+.profile-sidebar-logo p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #777;
+}
+
+.profile-sidebar-menu {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-menu-item {
+    border: none;
+    background: transparent;
+    padding: 13px 15px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555;
+    transition: 0.2s;
+}
+
+.profile-menu-item:hover {
+    background-color: #f1f5ff;
+    color: #2563eb;
+}
+
+.profile-menu-item.active {
+    background-color: #2563eb;
+    color: white;
+}
+
+.profile-logout-button {
+    margin-top: auto;
+    border: none;
+    background-color: #fff1f2;
+    color: #dc2626;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.profile-logout-button:hover {
+    background-color: #fee2e2;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.profile-content {
+    flex: 1;
+    padding: 35px 45px;
+    overflow-y: auto;
+}
+
+.profile-page-header {
+    margin-bottom: 25px;
+}
+
+.profile-page-header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #1f2937;
+}
+
+.profile-page-header p {
+    margin-top: 8px;
+    color: #6b7280;
+}
+
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profile-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 30px;
+    max-width: 1000px;
+}
+
+
+/* =========================
+   PROFILE HEADER
+========================= */
+
+.profile-card-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.large-profile-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.profile-card-header h2 {
+    margin: 0;
+    color: #1f2937;
+}
+
+.profile-card-header p {
+    margin-top: 6px;
+    color: #777;
+}
+
+
+/* =========================
+   PROFILE SECTIONS
+========================= */
+
+.profile-section {
+    padding: 25px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.profile-section h3 {
+    margin: 0 0 20px;
+    font-size: 18px;
+    color: #374151;
+}
+
+
+/* =========================
+   PROFILE GRID
+========================= */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.profile-field {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.profile-field label {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 7px;
+}
+
+.profile-field p {
+    margin: 0;
+    color: #1f2937;
+    font-size: 15px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.profile-actions {
+    padding-top: 25px;
+    text-align: right;
+}
+
+.edit-profile-button {
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-profile-button:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .profile-sidebar {
+        width: 210px;
+    }
+
+    .profile-content {
+        padding: 25px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .admin-profile-page {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .profile-sidebar-menu {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .profile-logout-button {
+        margin-top: 15px;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+}

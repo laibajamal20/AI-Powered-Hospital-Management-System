@@ -1,0 +1,479 @@
+* {
+    box-sizing: border-box;
+}
+
+.doctor-availability {
+    min-height: 100vh;
+    display: flex;
+    background-color: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.availability-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.availability-sidebar-logo {
+    padding: 0 12px 30px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.availability-sidebar-logo h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #2563eb;
+}
+
+.availability-sidebar-logo p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #777;
+}
+
+.availability-sidebar-menu {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.availability-menu-item {
+    border: none;
+    background: transparent;
+    padding: 13px 15px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555;
+    transition: 0.2s;
+}
+
+.availability-menu-item:hover {
+    background-color: #f1f5ff;
+    color: #2563eb;
+}
+
+.availability-menu-item.active {
+    background-color: #2563eb;
+    color: white;
+}
+
+.availability-logout-button {
+    margin-top: auto;
+    border: none;
+    background-color: #fff1f2;
+    color: #dc2626;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.availability-content {
+    flex: 1;
+    padding: 35px 45px;
+    overflow-y: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.availability-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.availability-header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #1f2937;
+}
+
+.availability-header p {
+    margin-top: 8px;
+    color: #6b7280;
+}
+
+.availability-admin-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.availability-admin-info span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 3px;
+}
+
+.availability-profile-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+/* =========================
+   WELCOME CARD
+========================= */
+
+.availability-welcome-card {
+    background-color: #2563eb;
+    color: white;
+    border-radius: 14px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.availability-welcome-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.availability-welcome-card p {
+    margin-bottom: 0;
+}
+
+.availability-primary-button {
+    border: none;
+    background-color: white;
+    color: #2563eb;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.availability-section {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.availability-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.availability-section-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #1f2937;
+}
+
+.availability-section-header p {
+    margin: 5px 0 0;
+    color: #777;
+    font-size: 13px;
+}
+
+/* =========================
+   DOCTOR SELECT
+========================= */
+
+.doctor-select-label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.doctor-select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 15px;
+    color: #374151;
+    outline: none;
+}
+
+.doctor-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px #dbeafe;
+}
+
+/* =========================
+   SELECTED DOCTOR
+========================= */
+
+.selected-doctor-card {
+    margin-top: 20px;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.selected-doctor-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.selected-doctor-card h3 {
+    margin: 0;
+    color: #1f2937;
+}
+
+.selected-doctor-card p {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* =========================
+   SCHEDULE
+========================= */
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.schedule-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.schedule-row:hover {
+    background-color: #f8fafc;
+}
+
+.day-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.day-section input {
+    width: 18px;
+    height: 18px;
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+
+.day-section label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #374151;
+    cursor: pointer;
+}
+
+.time-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.time-section span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.time-section input {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+}
+
+.time-section input:focus {
+    border-color: #2563eb;
+}
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.save-button {
+    margin-top: 20px;
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background-color: #1d4ed8;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.success-message {
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+.error-message {
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: #fff1f2;
+    color: #dc2626;
+    border: 1px solid #fecdd3;
+}
+
+/* =========================
+   INFORMATION BOX
+========================= */
+
+.availability-info-box {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 18px;
+    color: #1e40af;
+    margin-bottom: 25px;
+}
+
+.availability-info-box strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.availability-info-box p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.availability-loading {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #2563eb;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .availability-sidebar {
+        width: 210px;
+    }
+
+    .availability-content {
+        padding: 25px;
+    }
+
+    .availability-welcome-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .schedule-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .doctor-availability {
+        flex-direction: column;
+    }
+
+    .availability-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .availability-sidebar-menu {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .availability-menu-item {
+        white-space: nowrap;
+    }
+
+    .availability-logout-button {
+        margin-top: 15px;
+    }
+
+    .availability-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .availability-content {
+        padding: 20px;
+    }
+
+    .time-section {
+        flex-wrap: wrap;
+    }
+}
