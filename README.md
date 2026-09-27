@@ -302,11 +302,6 @@ Interactive API documentation is available at:
 http://localhost:8000/docs
 ```
 
-## Repository
-
-GitHub Repository:
-
-https://github.com/laibajamal20/AI-Powered-Hospital-Management-System
 
 ## Disclaimer
 
