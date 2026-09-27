@@ -1,0 +1,53 @@
+name: hospitalmanagmentsystem
+
+services:
+
+  postgres:
+    image: postgres:18
+    container_name: hms-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: hospital_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - hms_postgres_data:/var/lib/postgresql
+    networks:
+      - hms-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d hospital_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./Backend
+    container_name: hms-backend-container
+    env_file:
+      - ./Backend/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - hms-network
+
+  frontend:
+    build: ./Frontend
+    container_name: hms-frontend-container
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - hms-network
+
+volumes:
+  hms_postgres_data:
+    external: true
+
+networks:
+  hms-network:
+    driver: bridge
