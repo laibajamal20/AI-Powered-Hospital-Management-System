@@ -7,7 +7,7 @@ A full-stack Hospital Management System built to manage patients, doctors, appoi
 ### Admin
 
 * Manage doctors and patients
-* Manage departments
+* Manage doctor availability
 * Approve and deactivate user accounts
 * Manage hospital data and user access
 
@@ -16,7 +16,6 @@ A full-stack Hospital Management System built to manage patients, doctors, appoi
 * View and manage appointments
 * Manage patient medical records
 * Create prescriptions
-* Manage doctor availability
 * Access cardiovascular disease risk predictions for clinical decision support
 
 ### Patient
@@ -47,15 +46,9 @@ The model uses 15 demographic and cardiovascular features, including:
 * Glucose
 * Other cardiovascular risk factors
 
-The project evaluates multiple machine learning algorithms, including:
+A balanced Logistic Regression model was selected and trained for the final implementation to identify patients at higher risk within the project's requirements.
 
-* Logistic Regression
-* Random Forest
-* XGBoost
-
-A balanced Logistic Regression model was selected for the final implementation based on its ability to identify patients at higher risk within the project's requirements.
-
-The trained model is integrated into the FastAPI backend and provides an estimated 10-year coronary heart disease (CHD) risk probability for clinical decision support.
+The trained model and preprocessing scaler are integrated into the FastAPI backend and provide an estimated 10-year coronary heart disease (CHD) risk probability for clinical decision support.
 
 > **Note:** The prediction is intended for educational and decision-support purposes and is not a medical diagnosis.
 
