@@ -32,7 +32,7 @@ function PatientPrescriptions() {
                 // =========================
 
                 const patientResponse = await fetch(
-                    "http://127.0.0.1:8000/patients/me",
+                    `${import.meta.env.VITE_API_URL}/patients/me`,
                     {
                         method: "GET",
                         headers: {
@@ -82,7 +82,7 @@ function PatientPrescriptions() {
                 // =========================
 
                 const prescriptionResponse = await fetch(
-                    "http://127.0.0.1:8000/prescriptions/patient/me",
+                    `${import.meta.env.VITE_API_URL}/prescriptions/patient/me`,
                     {
                         method: "GET",
                         headers: {
@@ -137,7 +137,7 @@ function PatientPrescriptions() {
                 // =========================
 
                 const detailResponse = await fetch(
-                    "http://127.0.0.1:8000/prescription-details/patient/me",
+                    `${import.meta.env.VITE_API_URL}/prescription-details/patient/me`,
                     {
                         method: "GET",
                         headers: {

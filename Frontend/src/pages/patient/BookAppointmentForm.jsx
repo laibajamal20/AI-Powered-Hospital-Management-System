@@ -48,7 +48,7 @@ function BookAppointmentForm() {
                 // =========================
 
                 const patientResponse = await fetch(
-                    "http://127.0.0.1:8000/patients/me",
+                    `${import.meta.env.VITE_API_URL}/patients/me`,
                     {
                         method: "GET",
                         headers: {
@@ -75,7 +75,7 @@ function BookAppointmentForm() {
                 // =========================
 
                 const doctorResponse = await fetch(
-                    "http://127.0.0.1:8000/doctors/",
+                    `${import.meta.env.VITE_API_URL}/doctors/`,
                     {
                         method: "GET",
                         headers: {
@@ -481,7 +481,7 @@ function BookAppointmentForm() {
 
                 const response =
                     await fetch(
-                        "http://127.0.0.1:8000/appointments/",
+                        `${import.meta.env.VITE_API_URL}/appointments/`,
                         {
                             method: "POST",
 

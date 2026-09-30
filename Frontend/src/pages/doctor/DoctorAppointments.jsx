@@ -41,7 +41,7 @@ function DoctorAppointments() {
                 // =========================
 
                 const doctorResponse = await fetch(
-                    "http://127.0.0.1:8000/doctors/me",
+                    `${import.meta.env.VITE_API_URL}/doctors/me`,
                     {
                         method: "GET",
 
@@ -127,7 +127,7 @@ function DoctorAppointments() {
 
                 const appointmentResponse =
                     await fetch(
-                        "http://127.0.0.1:8000/appointments/doctor/me",
+                        `${import.meta.env.VITE_API_URL}/appointments/doctor/me`,
                         {
                             method: "GET",
 

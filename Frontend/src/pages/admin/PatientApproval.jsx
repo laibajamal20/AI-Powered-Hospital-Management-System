@@ -29,7 +29,7 @@ function PatientApproval() {
         // =========================
 
         const adminResponse = await fetch(
-            "http://127.0.0.1:8000/admin/me",
+            `${import.meta.env.VITE_API_URL}/admin/me`,
             {
                 method: "GET",
                 headers: {
@@ -62,7 +62,7 @@ function PatientApproval() {
         // =========================
 
         const response = await fetch(
-            "http://127.0.0.1:8000/admin/patients/pending",
+            `${import.meta.env.VITE_API_URL}/admin/patients/pending`,
             {
                 method: "GET",
                 headers: {

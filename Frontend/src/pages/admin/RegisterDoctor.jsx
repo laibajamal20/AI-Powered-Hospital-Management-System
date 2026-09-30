@@ -33,7 +33,7 @@ function RegisterDoctor() {
         try {
 
             const response = await fetch(
-                "http://127.0.0.1:8000/admin/me",
+                `${import.meta.env.VITE_API_URL}/admin/me`,
                 {
                     method: "GET",
                     headers: {
@@ -101,7 +101,7 @@ function RegisterDoctor() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/doctors/admin/register",
+            `${import.meta.env.VITE_API_URL}/doctors/admin/register`,
             {
                 method: "POST",
                 headers: {

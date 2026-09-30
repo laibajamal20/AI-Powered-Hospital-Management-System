@@ -42,7 +42,7 @@ function HeartDiseasePrediction() {
             return;
         }
 
-        fetch("http://127.0.0.1:8000/doctors/me", {
+        fetch(`${import.meta.env.VITE_API_URL}/doctors/me`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -133,7 +133,7 @@ function HeartDiseasePrediction() {
             };
 
             const response = await fetch(
-                "http://127.0.0.1:8000/heart/predict",
+                `${import.meta.env.VITE_API_URL}/heart/predict`,
                 {
                     method: "POST",
                     headers: {

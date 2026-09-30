@@ -50,7 +50,7 @@ function DoctorAvailability() {
                 // =========================
 
                 const adminResponse = await fetch(
-                    "http://127.0.0.1:8000/admin/me",
+                    `${import.meta.env.VITE_API_URL}/admin/me`,
                     {
                         method: "GET",
                         headers: {
@@ -72,7 +72,7 @@ function DoctorAvailability() {
                 // =========================
 
                 const doctorResponse = await fetch(
-                    "http://127.0.0.1:8000/doctors/admin/availability/doctors",
+                    `${import.meta.env.VITE_API_URL}/doctors/admin/availability/doctors`,
                     {
                         method: "GET",
                         headers: {
@@ -353,7 +353,7 @@ function DoctorAvailability() {
         try {
 
             const response = await fetch(
-                "http://127.0.0.1:8000/doctors/admin/availability",
+                `${import.meta.env.VITE_API_URL}/doctors/admin/availability`,
                 {
                     method: "POST",
 

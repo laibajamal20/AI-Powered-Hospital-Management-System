@@ -34,7 +34,7 @@ function PatientDashboard() {
             try {
 
                 const response = await fetch(
-                    "http://127.0.0.1:8000/patients/me",
+                    `${import.meta.env.VITE_API_URL}/patients/me`,
                     {
                         method: "GET",
 
@@ -124,7 +124,7 @@ function PatientDashboard() {
                 setPatient(data);
 // FETCH PATIENT APPOINTMENTS
 const appointmentsResponse = await fetch(
-    "http://127.0.0.1:8000/appointments/patient/me",
+    `${import.meta.env.VITE_API_URL}/appointments/patient/me`,
     {
         method: "GET",
         headers: {

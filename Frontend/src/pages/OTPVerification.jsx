@@ -38,7 +38,7 @@ function OTPVerification() {
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/auth/verify-otp",
+                `${import.meta.env.VITE_API_URL}/auth/verify-otp`,
                 {
                     method: "POST",
                     headers: {
@@ -124,7 +124,7 @@ function OTPVerification() {
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/auth/resend-otp",
+                `${import.meta.env.VITE_API_URL}/auth/resend-otp`,
                 {
                     method: "POST",
                     headers: {

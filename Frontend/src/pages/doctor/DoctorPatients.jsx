@@ -93,7 +93,7 @@ function DoctorPatients() {
 
                 // FETCH DOCTOR
                 const doctorResponse = await fetch(
-                    "http://127.0.0.1:8000/doctors/me",
+                    `${import.meta.env.VITE_API_URL}/doctors/me`,
                     {
                         method: "GET",
                         headers: {
@@ -134,7 +134,7 @@ function DoctorPatients() {
 
                 // FETCH PATIENTS
                 const patientsResponse = await fetch(
-                    "http://127.0.0.1:8000/doctors/me/patients",
+                    `${import.meta.env.VITE_API_URL}/doctors/me/patients`,
                     {
                         method: "GET",
                         headers: {
@@ -385,7 +385,7 @@ function DoctorPatients() {
             // CREATE MAIN PRESCRIPTION
             const prescriptionResponse =
                 await fetch(
-                    "http://127.0.0.1:8000/prescriptions/",
+                    `${import.meta.env.VITE_API_URL}/prescriptions/`,
                     {
                         method: "POST",
 
@@ -473,7 +473,7 @@ function DoctorPatients() {
 
                 const detailResponse =
                     await fetch(
-                        "http://127.0.0.1:8000/prescription-details/",
+                        `${import.meta.env.VITE_API_URL}/prescription-details/`,
                         {
                             method: "POST",
 
@@ -597,7 +597,7 @@ function DoctorPatients() {
         try {
 
             const response = await fetch(
-                "http://127.0.0.1:8000/doctors/me/prescriptions",
+                `${import.meta.env.VITE_API_URL}/doctors/me/prescriptions`,
                 {
                     method: "GET",
 
