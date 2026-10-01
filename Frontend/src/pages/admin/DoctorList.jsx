@@ -165,8 +165,7 @@ function DoctorList() {
         try {
 
             const response = await fetch(
-                `http://127.0.0.1:8000/admin/doctors/${doctorId}/status?is_active=${!currentStatus}`,
-                {
+                    `${import.meta.env.VITE_API_URL}/admin/doctors/${doctorId}/status?is_active=${!currentStatus}`,                {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${token}`,

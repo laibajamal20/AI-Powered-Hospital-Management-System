@@ -244,8 +244,7 @@ const updateAppointmentStatus = async (
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/appointments/doctor/${appointmentId}/status?status=${newStatus}`,
-            {
+             `${import.meta.env.VITE_API_URL}/appointments/doctor/${appointmentId}/status?status=${newStatus}`,            {
                 method: "PUT",
 
                 headers: {

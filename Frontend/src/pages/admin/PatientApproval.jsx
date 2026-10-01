@@ -146,8 +146,7 @@ function PatientApproval() {
 
 
             const response = await fetch(
-                `http://127.0.0.1:8000/admin/patients/${userId}/approve`,
-                {
+               `${import.meta.env.VITE_API_URL}/admin/patients/${userId}/approve`,                {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${token}`,
