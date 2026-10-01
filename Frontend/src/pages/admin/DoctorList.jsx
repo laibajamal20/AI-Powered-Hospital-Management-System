@@ -232,6 +232,84 @@ function DoctorList() {
 
     };
 
+    // =========================
+// DELETE DOCTOR
+// =========================
+
+const handleDeleteDoctor = async (doctorId, doctorName) => {
+
+    const confirmed = window.confirm(
+        `Are you sure you want to delete Dr. ${doctorName}?`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    const token = localStorage.getItem("access_token");
+
+    try {
+
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/admin/doctors/${doctorId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        if (response.status === 401) {
+
+            localStorage.clear();
+            navigate("/login");
+
+            return;
+        }
+
+        if (response.status === 403) {
+
+            setError(
+                "You do not have permission to delete doctors."
+            );
+
+            return;
+        }
+
+        if (!response.ok) {
+
+            const data = await response.json();
+
+            throw new Error(
+                data.detail ||
+                "Failed to delete doctor"
+            );
+        }
+
+        // Remove deleted doctor from the table
+        setDoctors((previousDoctors) =>
+            previousDoctors.filter(
+                (doctor) =>
+                    doctor.doctor_id !== doctorId
+            )
+        );
+
+    } catch (error) {
+
+        console.error(
+            "DOCTOR DELETE ERROR:",
+            error
+        );
+
+        setError(
+            error.message ||
+            "Unable to delete doctor."
+        );
+    }
+};
+
 
     // =========================
     // LOGOUT
@@ -625,28 +703,40 @@ function DoctorList() {
 
                                             <td>
 
-                                                <button
+                                                 <button
                                                     className={
                                                         doctor.is_active
-                                                            ? "doctor-action-button deactivate"
-                                                            : "doctor-action-button activate"
-                                                    }
-                                                    onClick={() =>
-                                                        handleStatusChange(
-                                                            doctor.doctor_id,
-                                                            doctor.is_active
-                                                        )
-                                                    }
-                                                >
+                                                          ? "doctor-action-button deactivate"
+                                                          : "doctor-action-button activate"
+                                                             }
+                                                       onClick={() =>
+                                                          handleStatusChange(
+                                                               doctor.doctor_id,
+                                                               doctor.is_active
+                                                            )
+                                                          }
+                                                           >
 
-                                                    {doctor.is_active
-                                                        ? "Deactivate"
-                                                        : "Activate"}
+                                                 {doctor.is_active
+                                                     ? "Deactivate"
+                                                     : "Activate"}
 
-                                                </button>
+                                                  </button>
+
+
+                                                 <button
+                                                  className="doctor-delete-button"
+                                                   onClick={() =>
+                                                       handleDeleteDoctor(
+                                                        doctor.doctor_id,
+                                                        doctor.doctor_name
+                                                       )
+                                                   }
+                                                   >
+                                                        Delete
+                                                   </button>
 
                                             </td>
-
 
                                         </tr>
 

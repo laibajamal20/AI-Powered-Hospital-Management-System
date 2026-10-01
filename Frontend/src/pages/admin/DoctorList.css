@@ -346,3 +346,19 @@
     align-items: center;
     justify-content: center;
 }
+
+.doctor-delete-button {
+    margin-left: 8px;
+    border: none;
+    background-color: #dc2626;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.doctor-delete-button:hover {
+    background-color: #b91c1c;
+}

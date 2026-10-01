@@ -267,27 +267,75 @@ def update_doctor_profile(
 
 
 # ============================================================
-# DELETE / DEACTIVATE DOCTOR
+# DELETE DOCTOR
+# ============================================================
+
+# ============================================================
+# DELETE DOCTOR
+# ============================================================
+
+# ============================================================
+# DELETE DOCTOR
 # ============================================================
 
 def delete_doctor(doctor_id):
     cursor = conn.cursor()
 
     try:
+        # Find the user account belonging to this doctor
         cursor.execute("""
-            UPDATE doctors
-            SET is_active = FALSE
+            SELECT user_id
+            FROM doctors
             WHERE doctor_id = %s
         """, (doctor_id,))
 
-        rows_updated = cursor.rowcount
+        doctor = cursor.fetchone()
 
-        conn.commit()
-
-        if rows_updated == 0:
+        if doctor is None:
             return {
                 "message": "Doctor not found"
             }
+
+        user_id = doctor[0]
+
+        # Delete prescription details first
+        cursor.execute("""
+            DELETE FROM prescription_details
+            WHERE prescription_id IN (
+                SELECT prescription_id
+                FROM prescriptions
+                WHERE doctor_id = %s
+            )
+        """, (doctor_id,))
+
+        # Delete prescriptions
+        cursor.execute("""
+            DELETE FROM prescriptions
+            WHERE doctor_id = %s
+        """, (doctor_id,))
+
+        # Delete appointments
+        cursor.execute("""
+            DELETE FROM appointments
+            WHERE doctor_id = %s
+        """, (doctor_id,))
+
+        # Delete doctor
+        # Doctor availability is deleted automatically
+        # because of ON DELETE CASCADE
+        cursor.execute("""
+            DELETE FROM doctors
+            WHERE doctor_id = %s
+        """, (doctor_id,))
+
+        # Delete doctor's login account
+        if user_id is not None:
+            cursor.execute("""
+                DELETE FROM users
+                WHERE user_id = %s
+            """, (user_id,))
+
+        conn.commit()
 
         return {
             "message": "Doctor deleted successfully"

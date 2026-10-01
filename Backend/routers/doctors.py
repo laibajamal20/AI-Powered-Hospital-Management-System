@@ -328,20 +328,6 @@ async def update_doctor(
 
 
 # ============================================================
-# ADMIN DELETE / DEACTIVATE DOCTOR
-# ============================================================
-
-@router.delete("/{doctor_id}")
-async def delete_doctor(
-    doctor_id: int
-):
-
-    return doctor_service.delete_doctor(
-        doctor_id
-    )
-
-
-# ============================================================
 # DOCTOR PRESCRIPTIONS
 # ============================================================
 

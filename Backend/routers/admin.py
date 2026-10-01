@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from services import admin_service
+from services import doctor_service
 from utils.jwt_handler import get_current_user, require_role
 
 
@@ -155,3 +156,14 @@ async def update_doctor_status(
     return {
         "message": "Doctor status updated successfully"
     }
+
+
+@router.delete("/doctors/{doctor_id}")
+async def delete_doctor(
+    doctor_id: int,
+    current_user=Depends(require_role("admin"))
+):
+
+    return doctor_service.delete_doctor(
+        doctor_id
+    )
