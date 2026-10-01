@@ -315,8 +315,7 @@ function BookAppointmentForm() {
 
                 const response =
                     await fetch(
-                        `http://127.0.0.1:8000/appointments/doctor/${selectedDoctor}/availability?appointment_date=${date}`,
-                        {
+                             `${import.meta.env.VITE_API_URL}/appointments/doctor/${selectedDoctor}/availability?appointment_date=${date}`,                        {
                             method: "GET",
 
                             headers: {

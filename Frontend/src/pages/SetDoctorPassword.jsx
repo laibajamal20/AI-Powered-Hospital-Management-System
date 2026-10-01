@@ -49,7 +49,7 @@ function SetDoctorPassword() {
         try {
 
             const response = await fetch(
-                `http://127.0.0.1:8000/doctors/set-password/${token}`,
+                `${import.meta.env.VITE_API_URL}/doctors/set-password/${token}`,
                 {
                     method: "POST",
                     headers: {
