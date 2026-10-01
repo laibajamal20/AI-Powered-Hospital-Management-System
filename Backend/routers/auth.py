@@ -200,16 +200,18 @@ async def google_login(data: GoogleLoginRequest):
 @router.post("/login")
 async def login(data: LoginRequest):
 
-    # --------------------------------------------------------
-    # FIND USER
-    # --------------------------------------------------------
+    print("LOGIN STARTED")
+    print("EMAIL:", data.email)
+    print("ROLE:", data.role)
 
-    user = get_user_by_email(
-        data.email
-    )
+    # FIND USER
+    print("STEP 1: Finding user")
+
+    user = get_user_by_email(data.email)
+
+    print("STEP 1 DONE - USER:", user)
 
     if not user:
-
         raise HTTPException(
             status_code=401,
             detail="Invalid email or password."
@@ -225,69 +227,47 @@ async def login(data: LoginRequest):
         is_approved
     ) = user
 
-    # --------------------------------------------------------
-    # CHECK ROLE
-    # --------------------------------------------------------
+    print("STEP 2: User data loaded")
+    print("ROLE FROM DATABASE:", role)
 
     if role != data.role:
-
         raise HTTPException(
             status_code=403,
             detail="Selected role does not match this account."
         )
 
-    # --------------------------------------------------------
-    # CHECK ACTIVE
-    # --------------------------------------------------------
-
     if not is_active:
-
         raise HTTPException(
             status_code=403,
             detail="Your account is inactive."
         )
 
-    # --------------------------------------------------------
-    # CHECK PATIENT APPROVAL
-    # --------------------------------------------------------
-
     if role == "patient" and not is_approved:
-
         raise HTTPException(
             status_code=403,
             detail="Your account has not been approved by the admin yet."
         )
 
-    # --------------------------------------------------------
-    # CHECK PASSWORD
-    # --------------------------------------------------------
+    print("STEP 3: Checking password")
 
     if not pwd_context.verify(
         data.password,
         password_hash
     ):
-
         raise HTTPException(
             status_code=401,
             detail="Invalid email or password."
         )
 
-    # --------------------------------------------------------
-    # GENERATE OTP
-    # --------------------------------------------------------
+    print("STEP 3 DONE - PASSWORD CORRECT")
+
+    print("STEP 4: Generating OTP")
 
     otp, expiry = generate_otp()
 
-    print("--------------------------------")
-    print("GENERATED OTP")
-    print("EMAIL:", data.email)
-    print("OTP:", otp)
-    print("EXPIRY:", expiry)
-    print("--------------------------------")
+    print("STEP 4 DONE - OTP GENERATED")
 
-    # --------------------------------------------------------
-    # SAVE OTP
-    # --------------------------------------------------------
+    print("STEP 5: Saving OTP")
 
     save_otp(
         data.email,
@@ -295,14 +275,16 @@ async def login(data: LoginRequest):
         expiry
     )
 
-    # --------------------------------------------------------
-    # SEND OTP EMAIL
-    # --------------------------------------------------------
+    print("STEP 5 DONE - OTP SAVED")
+
+    print("STEP 6: Sending OTP email")
 
     await send_otp_email(
         data.email,
         otp
     )
+
+    print("STEP 6 DONE - EMAIL SENT")
 
     return {
         "message": "OTP sent to your registered email.",
@@ -310,8 +292,6 @@ async def login(data: LoginRequest):
         "email": data.email,
         "role": role
     }
-
-
 # ============================================================
 # VERIFY OTP
 # ============================================================
