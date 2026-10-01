@@ -189,8 +189,7 @@ async def admin_register_doctor(
         token = token_data["token"]
 
         setup_link = (
-            f"http://localhost:5173/set-password/{token}"
-        )
+             f"https://ai-powered-hospital-management-system-my0bvin09-my-team-ecd2.vercel.app/set-password/{token}")
 
         # Send doctor setup email
         await send_doctor_setup_email(
