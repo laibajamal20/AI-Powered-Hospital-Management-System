@@ -1,32 +1,50 @@
 import os
-import resend
+import asyncio
 from dotenv import load_dotenv
+from agentmail import AgentMail
 
 load_dotenv()
 
-resend.api_key = os.getenv("RESEND_API_KEY")
+AGENTMAIL_API_KEY = os.getenv("AGENTMAIL_API_KEY")
+AGENTMAIL_INBOX = "hms@agentmail.to"
+
+client = AgentMail(api_key=AGENTMAIL_API_KEY)
 
 
 async def send_otp_email(receiver_email: str, otp: str):
 
-    params = {
-        "from": "onboarding@resend.dev",
-        "to": [receiver_email],
-        "subject": "HMS Two-Factor Authentication Code",
-        "html": f"""
-        <h2>Hospital Management System</h2>
+    text = f"""
+Hospital Management System
 
-        <p>Your verification code is:</p>
+Your verification code is:
 
-        <h1>{otp}</h1>
+{otp}
 
-        <p>This code will expire in 5 minutes.</p>
+This code will expire in 5 minutes.
 
-        <p>If you did not attempt to log in, please ignore this email.</p>
-        """
-    }
+If you did not attempt to log in, please ignore this email.
+"""
 
-    await resend.Emails.send_async(params)
+    html = f"""
+    <h2>Hospital Management System</h2>
+
+    <p>Your verification code is:</p>
+
+    <h1>{otp}</h1>
+
+    <p>This code will expire in 5 minutes.</p>
+
+    <p>If you did not attempt to log in, please ignore this email.</p>
+    """
+
+    await asyncio.to_thread(
+        client.inboxes.messages.send,
+        inbox_id=AGENTMAIL_INBOX,
+        to=receiver_email,
+        subject="HMS Two-Factor Authentication Code",
+        text=text,
+        html=html
+    )
 
 
 async def send_doctor_setup_email(
@@ -35,28 +53,50 @@ async def send_doctor_setup_email(
     setup_link: str
 ):
 
-    params = {
-        "from": "onboarding@resend.dev",
-        "to": [receiver_email],
-        "subject": "Hospital Management System - Doctor Account",
-        "html": f"""
-        <h2>Hello {doctor_name},</h2>
+    text = f"""
+Hello {doctor_name},
 
-        <p>Your doctor account has been created in the Hospital Management System.</p>
+Your doctor account has been created in the Hospital Management System.
 
-        <p><strong>Email:</strong> {receiver_email}</p>
+Email:
+{receiver_email}
 
-        <p>To activate your account and create your password, please use the link below:</p>
+To activate your account and create your password, please use the link below:
 
-        <p><a href="{setup_link}">Set Your Password</a></p>
+{setup_link}
 
-        <p>This link is for setting your password. Please do not share it with anyone.</p>
+This link is for setting your password. Please do not share it with anyone.
 
-        <p>If you did not expect this account, please contact the hospital administrator.</p>
+If you did not expect this account, please contact the hospital administrator.
 
-        <p>Regards,<br>
-        Hospital Management System</p>
-        """
-    }
+Regards,
+Hospital Management System
+"""
 
-    await resend.Emails.send_async(params)
+    html = f"""
+    <h2>Hello {doctor_name},</h2>
+
+    <p>Your doctor account has been created in the Hospital Management System.</p>
+
+    <p><strong>Email:</strong> {receiver_email}</p>
+
+    <p>To activate your account and create your password, please use the link below:</p>
+
+    <p><a href="{setup_link}">Set Your Password</a></p>
+
+    <p>This link is for setting your password. Please do not share it with anyone.</p>
+
+    <p>If you did not expect this account, please contact the hospital administrator.</p>
+
+    <p>Regards,<br>
+    Hospital Management System</p>
+    """
+
+    await asyncio.to_thread(
+        client.inboxes.messages.send,
+        inbox_id=AGENTMAIL_INBOX,
+        to=receiver_email,
+        subject="Hospital Management System - Doctor Account",
+        text=text,
+        html=html
+    )
