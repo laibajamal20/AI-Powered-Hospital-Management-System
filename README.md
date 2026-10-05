@@ -319,6 +319,25 @@ Interactive API documentation is available at:
 ```text
 http://localhost:8000/docs
 ```
+## Screenshots
+
+### Admin Dashboard
+admin-dashboard.png
+
+### Patient Appointment Booking
+book-appointment.png
+
+### Doctor Availability
+doctor-availability.png
+
+### Doctor Dashboard
+doctor-dashboard.png
+
+### Cardiovascular Disease Risk Prediction
+heart-disease-prediction.png
+
+### Login
+login.png
 
 ## Disclaimer
 
