@@ -171,6 +171,7 @@ function Login() {
                 console.log("Google Login Failed");
                 alert("Google Login Failed");
               }}
+                width="330"
             />
 
             <p>Don't have an account?</p>
